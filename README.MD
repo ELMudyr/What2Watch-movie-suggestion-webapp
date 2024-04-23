@@ -13,9 +13,11 @@ This is a web application that suggests movies based on user input: category and
 
 ## Getting Started
 
+Test the live version of the webapp: https://elmudyr.github.io/What2Watch-movie-suggestion-webapp/
+
 To run the application locally, follow these steps:
 
-1. Clone the repository to your local machine:
+Clone the repository to your local machine:
 
    ```bash
    git clone https://github.com/your-username/movie-suggestion-app.git

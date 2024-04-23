@@ -38,7 +38,7 @@ function createMovieSuggestion(movie) {
 
 // Function to fetch movie data from OMDb API
 async function fetchMovies(category) {
-  const url = `http://www.omdbapi.com/?s=${category}&apikey=${apiKey}&type=movie`;
+  const url = `https://www.omdbapi.com/?s=${category}&apikey=${apiKey}&type=movie`;
   console.log("Request URL:", url); // Log the constructed URL
 
   try {

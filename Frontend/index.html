@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>What2Watch</title>
+    <link rel="stylesheet" href="src/output.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.7.0/nouislider.min.css"
+    />
+  </head>
+  <body class="bg-Primary-Background font-Rubik flex flex-col">
+    <div class="flex justify-center h-[500px] mt-14">
+      <img
+        class="w-50 object-contain"
+        id="posterImg"
+        src="src/15ba25105957829.5f851d78e1c3a.jpg"
+        alt="movie poster"
+      />
+    </div>
+    <h1
+      class="text-center my-5 text-Primary-Text text-2xl font-medium"
+      id="movieTitle"
+    >
+      Dune Part Two
+    </h1>
+    <div
+      class="flex justify-center w-fit m-auto bg-Primary-Secondary p-5 rounded-xl gap-10"
+    >
+      <div class="text-center m-auto w-fit">
+        <label class="text-Primary-Text" for="ratingMargin"
+          >Select Minimum Rating</label
+        >
+        <div class="flex justify-center">
+          <input
+            class="accent-Primary-Accent cursor-pointer"
+            type="range"
+            id="ratingMargin"
+            name="ratingMargin"
+            min="0"
+            max="10"
+            step="0.5"
+            value="5"
+          />
+          <br />
+          <span
+            class="ml-3 w-7 rounded-md font-thin text-Primary-Background bg-Primary-Primary"
+            id="selectedRating"
+            >5</span
+          >
+        </div>
+      </div>
+      <div class="w-fit m-auto flex flex-col">
+        <label for="selectedRating" class="text-Primary-Text"
+          >Select Category</label
+        >
+        <select
+          class="cursor-pointer bg-Primary-Primary border border-Primary-Accent text-Primary-Background text-sm rounded-lg focus:ring-Primary-Text focus:border-Primary-Text block w-full p-1"
+          id="category"
+          class="accent-Primary-Accent"
+        >
+          <option value="Action">Action</option>
+          <option value="Comedy">Comedy</option>
+          <option value="Crime">Crime</option>
+          <option value="Horror">Horror</option>
+          <option value="Sci-Fi">Sci-Fi</option>
+          <option value="Thriller">Thriller</option>
+          <option value="War">War</option>
+          <option value="Mystery">Mystery</option>
+          <option value="Romance">Romance</option>
+        </select>
+      </div>
+    </div>
+    <button
+      id="submitButton"
+      class="text-center text-Primary-Text mt-5 bg-Primary-Accent border-Primary-Secondary border w-fit m-auto px-6 py-2 rounded-3xl drop-shadow-lg shadow-zinc-900 shadow-md hover:-translate-y-0.5 hover:opacity-90"
+    >
+      Submit
+    </button>
+
+    <div
+      class="text-Primary-Text text-center uppercase mt-3"
+      id="suggestions"
+    ></div>
+    <script src="index.js"></script>
+  </body>
+</html>

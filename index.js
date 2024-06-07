@@ -52,8 +52,17 @@ function updateMovieSuggestion(movie) {
   const title = document.getElementById("movieTitle");
   title.textContent = movie.title;
 
-  const rating = document.getElementById("rating");
-  rating.textContent = movie.rating;
+  const rating = document.getElementById("ratingDisplay");
+
+  const movieRating = movie.vote_average;
+
+  ratingDisplay.textContent = `${movieRating.toString().substring(0, 3)} ⭐`;
+
+  const release_date = movie.release_date;
+  const release_year = release_date.substring(0, 4);
+
+  const date = document.getElementById("date");
+  date.textContent = `(${release_year})`;
 }
 
 // Function to fetch movie data from TMDb API

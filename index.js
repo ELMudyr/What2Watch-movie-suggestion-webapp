@@ -1,4 +1,27 @@
-const apiKey = "6acf56c"; // Replace with your actual OMDb API key
+const apiKey = "67f9544bea06bbbbff7d5e0d7aebefbe"; // Replace with your actual TMDb API key
+
+// Mapping of genre names to TMDb genre IDs
+const genreMap = {
+  Action: 28,
+  Adventure: 12,
+  Animation: 16,
+  Comedy: 35,
+  Crime: 80,
+  Documentary: 99,
+  Drama: 18,
+  Family: 10751,
+  Fantasy: 14,
+  History: 36,
+  Horror: 27,
+  Music: 10402,
+  Mystery: 9648,
+  Romance: 10749,
+  "Science Fiction": 878,
+  "TV Movie": 10770,
+  Thriller: 53,
+  War: 10752,
+  Western: 37,
+};
 
 // Select form elements
 const categorySelect = document.querySelector("#category");
@@ -12,47 +35,48 @@ ratingInput.addEventListener("input", function () {
   selectedRating.textContent = this.value; // Update displayed rating value (span)
 });
 
-// Function to build the movie suggestion element
-function createMovieSuggestion(movie) {
+// Function to update the movie suggestion element
+function updateMovieSuggestion(movie) {
   const posterImg = document.getElementById("posterImg");
-  posterImg.src = movie.Poster;
-  posterImg.alt = `${movie.Title} Poster`;
+  posterImg.src = movie.poster_path
+    ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+    : "placeholder.jpg";
+  posterImg.alt = `${movie.title} Poster`;
+
+  const posterImgBg = document.getElementById("posterImgBg");
+  posterImgBg.src = movie.poster_path
+    ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
+    : "placeholder.jpg";
+  posterImgBg.alt = `${movie.title} Poster`;
 
   const title = document.getElementById("movieTitle");
-  title.textContent = movie.Title;
+  title.textContent = movie.title;
 
-  // Add poster image (optional)
-  if (movie.Poster) {
-    const poster = document.createElement("img");
-    poster.src = movie.Poster;
-    poster.alt = `${movie.Title} Poster`;
-    suggestion.appendChild(poster);
-  }
-
-  suggestion.appendChild(title);
-
-  // Add more details like rating, etc. (optional)
-
-  return suggestion;
+  const rating = document.getElementById("rating");
+  rating.textContent = movie.rating;
 }
 
-// Function to fetch movie data from OMDb API
-async function fetchMovies(category) {
-  const url = `http://www.omdbapi.com/?s=${category}&apikey=${apiKey}&type=movie`;
+// Function to fetch movie data from TMDb API
+async function fetchMovies(categoryName, rating) {
+  const category = genreMap[categoryName];
+  if (!category) {
+    console.error("Invalid genre selected.");
+    return null;
+  }
+
+  const url = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&with_genres=${category}&vote_average.gte=${rating}&vote_average.lte=10`;
   console.log("Request URL:", url); // Log the constructed URL
 
   try {
     const response = await fetch(url);
     const data = await response.json();
 
-    if (data.Search) {
-      const topRatedMovie = data.Search.reduce((prev, current) => {
-        return parseFloat(current.imdbRating) > parseFloat(prev.imdbRating)
-          ? current
-          : prev;
-      });
+    if (data.results && data.results.length > 0) {
+      // Select a random movie from the results
+      const randomIndex = Math.floor(Math.random() * data.results.length);
+      const randomMovie = data.results[randomIndex];
 
-      return topRatedMovie;
+      return randomMovie;
     } else {
       console.error("No movies found for this category.");
       return null;
@@ -68,16 +92,24 @@ async function handleSubmit(event) {
   event.preventDefault();
 
   const selectedCategory = categorySelect.value;
+  const rating = ratingInput.value;
   console.log("Selected category:", selectedCategory); // Log the selected category
+  console.log("Selected rating:", rating); // Log the selected rating
 
   // Use await to wait for movies data before proceeding
   try {
-    const movie = await fetchMovies(selectedCategory);
+    const movie = await fetchMovies(selectedCategory, rating);
 
     if (movie) {
-      const suggestion = createMovieSuggestion(movie);
-      suggestionsSection.innerHTML = ""; // Clear previous suggestions
-      suggestionsSection.appendChild(suggestion);
+      updateMovieSuggestion(movie);
+
+      // Disable the submit button while waiting
+      submitButton.disabled = true;
+
+      // Use setTimeout to wait for 1 second before re-enabling the submit button
+      setTimeout(() => {
+        submitButton.disabled = false;
+      }, 1000);
     } else {
       suggestionsSection.textContent =
         "No movies found matching your criteria.";

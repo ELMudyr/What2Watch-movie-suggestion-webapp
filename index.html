@@ -10,77 +10,114 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.7.0/nouislider.min.css"
     />
     <link rel="shortcut icon" href="src/cinema.png" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
   <body
-    class="bg-Primary-Background font-Rubik flex flex-col bg-[radial-gradient(circle_farthest-side,rgba(255,0,182,.15),rgba(255,255,255,0))]"
+    class="bg-Primary-Background m-auto overflow-hidden min-w-[375px] h-screen font-Rubik flex flex-col bg-[radial-gradient(circle_farthest-side,rgba(255,0,182,.15),rgba(255,255,255,0))]"
   >
-    <div class="flex justify-center h-[500px] mt-14">
+    <div class="absolute right-5 top-5 z-20 w-fit h-fit">
+      <a href="https://github.com/ELMudyr/What2Watch-movie-suggestion-webapp">
+        <i class="fa-brands fa-github fa-spin fa-2xl cursor-pointer opacity-70">
+        </i>
+      </a>
+    </div>
+    <div class="w-full h-screen absolute">
       <img
-        class="w-50 object-contain"
-        id="posterImg"
-        src="src/15ba25105957829.5f851d78e1c3a.jpg"
+        class="rotate-6 scale-[300%] m-auto opacity-10 blur-md"
+        id="posterImgBg"
+        src=""
         alt="movie poster"
       />
     </div>
-    <h1
-      class="text-center my-5 text-Primary-Text text-2xl font-medium"
-      id="movieTitle"
-    >
-      Dune Part Two
-    </h1>
-    <div
-      class="flex justify-center w-fit m-auto bg-Primary-Secondary p-5 rounded-xl gap-10"
-    >
-      <div class="text-center m-auto w-fit">
-        <label class="text-Primary-Text" for="ratingMargin"
-          >Select Minimum Rating</label
-        >
-        <div class="flex justify-center">
-          <input
-            class="accent-Primary-Accent cursor-pointer"
-            type="range"
-            id="ratingMargin"
-            name="ratingMargin"
-            min="0"
-            max="10"
-            step="0.5"
-            value="5"
+    <div class="z-10 flex flex-col m-auto">
+      <div id="suggestions">
+        <div class="flex justify-center h-[500px] mt-14">
+          <img
+            class="w-50 object-contain rounded-xl"
+            id="posterImg"
+            src="src/15ba25105957829.5f851d78e1c3a.jpg"
+            alt="movie poster"
           />
-          <br />
-          <span
-            class="ml-3 w-7 rounded-md font-thin text-Primary-Background bg-Primary-Primary"
-            id="selectedRating"
-            >5</span
-          >
+        </div>
+        <h1
+          class="text-center my-5 text-Primary-Text text-2xl font-medium"
+          id="movieTitle"
+        >
+          Dune Part Two
+        </h1>
+        <p id="rating"></p>
+
+        <div
+          class="justify-center min-w-[375px] max-w-fit mx-auto flex bg-Primary-Secondary p-5 rounded-xl gap-10"
+        >
+          <div class="text-center w-fit">
+            <label class="text-Primary-Text" for="ratingMargin"
+              >Select Minimum Rating</label
+            >
+            <div class="flex justify-center">
+              <input
+                class="accent-Primary-Accent cursor-pointer"
+                type="range"
+                id="ratingMargin"
+                name="ratingMargin"
+                min="0"
+                max="10"
+                step="0.5"
+                value="5"
+              />
+              <br />
+              <span
+                class="ml-3 w-7 rounded-md font-thin text-Primary-Background bg-Primary-Primary"
+                id="selectedRating"
+                >5</span
+              >
+            </div>
+          </div>
+          <div class="w-fit flex flex-col">
+            <label for="selectedRating" class="text-Primary-Text"
+              >Select Category</label
+            >
+            <select
+              class="cursor-pointer bg-Primary-Primary border border-Primary-Accent text-Primary-Background text-sm rounded-lg focus:ring-Primary-Text focus:border-Primary-Text block w-full p-1"
+              id="category"
+              class="accent-Primary-Accent"
+            >
+              <option value="Action">Action</option>
+              <option value="Adventure">Adventure</option>
+              <option value="Animation">Animation</option>
+              <option value="Comedy">Comedy</option>
+              <option value="Crime">Crime</option>
+              <option value="Documentary">Documentary</option>
+              <option value="Drama">Drama</option>
+              <option value="Family">Family</option>
+              <option value="Fantasy">Fantasy</option>
+              <option value="History">History</option>
+              <option value="Horror">Horror</option>
+              <option value="Music">Music</option>
+              <option value="Mystery">Mystery</option>
+              <option value="Romance">Romance</option>
+              <option value="Science Fiction">Science Fiction</option>
+              <option value="TV Movie">TV Movie</option>
+              <option value="Thriller">Thriller</option>
+              <option value="War">War</option>
+              <option value="Western">Western</option>
+            </select>
+          </div>
         </div>
       </div>
-      <div class="w-fit m-auto flex flex-col">
-        <label for="selectedRating" class="text-Primary-Text"
-          >Select Category</label
-        >
-        <select
-          class="cursor-pointer bg-Primary-Primary border border-Primary-Accent text-Primary-Background text-sm rounded-lg focus:ring-Primary-Text focus:border-Primary-Text block w-full p-1"
-          id="category"
-          class="accent-Primary-Accent"
-        >
-          <option value="Action">Action</option>
-          <option value="Comedy">Comedy</option>
-          <option value="Crime">Crime</option>
-          <option value="Horror">Horror</option>
-          <option value="Sci-Fi">Sci-Fi</option>
-          <option value="Thriller">Thriller</option>
-          <option value="War">War</option>
-          <option value="Mystery">Mystery</option>
-          <option value="Romance">Romance</option>
-        </select>
-      </div>
+      <button
+        id="submitButton"
+        class="text-center text-Primary-Text mt-5 bg-Primary-Accent border-Primary-Secondary border w-fit m-auto px-6 py-2 rounded-3xl drop-shadow-lg shadow-zinc-900 shadow-md hover:-translate-y-0.5 hover:opacity-90"
+      >
+        Submit
+      </button>
     </div>
-    <button
-      id="submitButton"
-      class="text-center text-Primary-Text mt-5 bg-Primary-Accent border-Primary-Secondary border w-fit m-auto px-6 py-2 rounded-3xl drop-shadow-lg shadow-zinc-900 shadow-md hover:-translate-y-0.5 hover:opacity-90"
-    >
-      Submit
-    </button>
 
     <div
       class="text-Primary-Text text-center uppercase mt-3"

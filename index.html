@@ -19,15 +19,18 @@
     />
   </head>
   <body
-    class="bg-Primary-Background m-auto overflow-hidden min-w-[375px] h-screen font-Rubik flex flex-col bg-[radial-gradient(circle_farthest-side,rgba(255,0,182,.15),rgba(255,255,255,0))]"
+    class="bg-Primary-Background -z-30 m-auto overflow-hidden min-w-[375px] h-screen font-Rubik flex flex-col bg-[radial-gradient(circle_farthest-side,rgba(255,0,182,.15),rgba(255,255,255,0))]"
   >
     <div class="absolute right-5 top-5 z-20 w-fit h-fit">
       <a href="https://github.com/ELMudyr/What2Watch-movie-suggestion-webapp">
-        <i class="fa-brands fa-github fa-spin fa-2xl cursor-pointer opacity-70">
+        <i
+          class="fa-brands fa-github fa-spin fa-2xl cursor-pointer opacity-70"
+          style="color: #df8c94"
+        >
         </i>
       </a>
     </div>
-    <div class="absolute">
+    <div class="absolute -z-10">
       <img
         class="rotate-6 scale-[300%] m-auto opacity-10 blur-md"
         id="posterImgBg"
@@ -56,8 +59,8 @@
         <div
           class="flex text-center m-auto items-center mb-5 justify-center gap-3"
         >
-          <h2 id="date"></h2>
-          <p id="ratingDisplay"></p>
+          <h2 id="date" class="text-Primary-Primary"></h2>
+          <p id="ratingDisplay" class="text-Primary-Primary"></p>
         </div>
 
         <div

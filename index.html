@@ -37,9 +37,11 @@
     </div>
     <div class="z-10 container min-w-[375px] flex flex-col m-auto">
       <div id="suggestions">
-        <div class="flex justify-center min-h-[300px] h-[500px] mt-14">
+        <div
+          class="flex justify-center container h-[300px] lg:min-h-[300px] lg:h-[500px] md:mt-14"
+        >
           <img
-            class="w-50 object-contain rounded-xl"
+            class="object-fit rounded-xl"
             id="posterImg"
             src="src/15ba25105957829.5f851d78e1c3a.jpg"
             alt="movie poster"
@@ -59,7 +61,7 @@
         </div>
 
         <div
-          class="justify-center min-w-[375px] max-w-fit mx-auto flex bg-Primary-Secondary p-5 rounded-xl gap-10"
+          class="justify-center md:min-w-[390px] md:max-w-fit flex-col md:flex-row mx-auto flex bg-Primary-Secondary p-5 bg-opacity-70 rounded-md md:rounded-xl gap-5 lg:gap-10"
         >
           <div class="text-center m-auto w-fit">
             <label class="text-Primary-Text" for="ratingMargin"
@@ -84,7 +86,7 @@
               >
             </div>
           </div>
-          <div class="w-fit m-auto flex flex-col">
+          <div class="w-fit m-auto flex text-center md:text-start flex-col">
             <label for="selectedRating" class="text-Primary-Text"
               >Select Category</label
             >

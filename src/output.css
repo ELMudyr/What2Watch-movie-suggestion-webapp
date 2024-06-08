@@ -602,6 +602,10 @@ video {
   top: 1.25rem;
 }
 
+.top-0{
+  top: 0px;
+}
+
 .z-10{
   z-index: 10;
 }
@@ -699,6 +703,14 @@ video {
 
 .h-\[00px\]{
   height: 00px;
+}
+
+.h-\[500\]{
+  height: 500;
+}
+
+.h-\[50\]{
+  height: 50;
 }
 
 .min-h-\[\]{
@@ -946,6 +958,10 @@ video {
 
 .font-thin{
   font-weight: 100;
+}
+
+.font-bold{
+  font-weight: 700;
 }
 
 .uppercase{

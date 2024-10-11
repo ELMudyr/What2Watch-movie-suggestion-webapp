@@ -148,5 +148,5 @@ tl.from("#submitButton", {
   yPercent: 50,
   duration: 0.5,
   autoAlpha: 0,
-  delay: 1,
+  delay: 0.5,
 });

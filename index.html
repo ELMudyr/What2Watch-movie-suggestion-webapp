@@ -19,7 +19,7 @@
     />
   </head>
   <body
-    class="bg-Primary-Background py-16 -z-30 m-auto min-w-[375px] h-screen font-Rubik flex flex-col bg-[radial-gradient(circle_farthest-side,rgba(255,0,182,.15),rgba(255,255,255,0))]"
+    class="bg-Primary-Background py-16 -z-30 m-auto min-w-[375px] overflow-hidden h-screen font-Rubik flex flex-col bg-[radial-gradient(circle_farthest-side,rgba(255,0,182,.15),rgba(255,255,255,0))]"
   >
     <div class="absolute right-5 top-5 z-20 w-fit h-fit">
       <a href="https://github.com/ELMudyr/What2Watch-movie-suggestion-webapp">
@@ -30,9 +30,9 @@
         </i>
       </a>
     </div>
-    <div class="absolute top-0 -z-10">
+    <div class="w-[100%]">
       <img
-        class="rotate-6 scale-[300%] m-auto opacity-10 blur-md"
+        class="-rotate-6 scale-[300%] blur-md absolute right-1/3 top-1/3 m-auto opacity-10"
         id="posterImgBg"
         src=""
         alt="movie poster"
@@ -65,6 +65,7 @@
 
         <div
           class="justify-center md:min-w-[390px] md:max-w-fit flex-col md:flex-row mx-auto flex bg-Primary-Secondary p-5 bg-opacity-70 rounded-md md:rounded-xl gap-5 lg:gap-10"
+          id="card"
         >
           <div class="text-center m-auto w-fit">
             <label class="text-Primary-Text" for="ratingMargin"
@@ -130,6 +131,7 @@
     </div>
 
     <div class="pb-64"></div>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="index.js"></script>
   </body>
 </html>

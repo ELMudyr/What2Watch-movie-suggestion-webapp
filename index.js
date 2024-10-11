@@ -130,3 +130,23 @@ async function handleSubmit(event) {
 
 // Add event listener to submit button
 submitButton.addEventListener("click", handleSubmit);
+
+//Gsap animations
+
+var tl = gsap.timeline();
+// tl.from("#card", {
+//   autoAlpha: 0,
+//   duration: 1,
+// });
+tl.from("#posterImg, #movieTitle , #card", {
+  y: "-200%",
+  autoAlpha: 0,
+  duration: 1,
+  ease: "back",
+});
+tl.from("#submitButton", {
+  yPercent: 50,
+  duration: 0.5,
+  autoAlpha: 0,
+  delay: 1,
+});
